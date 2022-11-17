@@ -176,8 +176,7 @@ class _ItemWidget extends StatelessWidget {
                 if (item.title != null)
                   Padding(
                     padding: const EdgeInsets.only(top: 2),
-                    child: Text(
-                      item.title!,
+                    child: DefaultTextStyle.merge(
                       style: TextStyle(
                         color: isSelected
                             ? item.activeColor
@@ -187,6 +186,7 @@ class _ItemWidget extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                         fontSize: 14,
                       ),
+                      child: item.title!,
                     ),
                   ),
               ],
@@ -221,5 +221,5 @@ class BottomNavyBarItem {
   /// The [icon] and [title] color defined when this item is not selected.
   final Color? inactiveColor;
 
-  final String? title;
+  final Widget? title;
 }
