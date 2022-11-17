@@ -22,6 +22,7 @@ class BottomNavyBar extends StatelessWidget {
     required this.onItemSelected,
     this.curve = Curves.linear,
     this.selectedBackgroundColor,
+    this.fullTabItem = false,
   })  : assert(items.length >= 2 && items.length <= 5),
         super(key: key);
 
@@ -63,6 +64,7 @@ class BottomNavyBar extends StatelessWidget {
   final Curve curve;
 
   final Color? selectedBackgroundColor;
+  final bool fullTabItem;
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +90,7 @@ class BottomNavyBar extends StatelessWidget {
             mainAxisAlignment: mainAxisAlignment,
             children: items.map((item) {
               var index = items.indexOf(item);
-              return GestureDetector(
+              final itemWidget = GestureDetector(
                 onTap: () => onItemSelected(index),
                 child: _ItemWidget(
                   item: item,
@@ -101,6 +103,13 @@ class BottomNavyBar extends StatelessWidget {
                   selectedBackgroundColor: selectedBackgroundColor,
                 ),
               );
+              if (fullTabItem) {
+                return Expanded(
+                  child: itemWidget,
+                );
+              } else {
+                return itemWidget;
+              }
             }).toList(),
           ),
         ),
