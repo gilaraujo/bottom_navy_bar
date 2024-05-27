@@ -64,7 +64,7 @@ class BottomNavyBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bgColor = backgroundColor ?? Theme.of(context).bottomAppBarColor;
+    final bgColor = backgroundColor ?? Theme.of(context).bottomAppBarTheme.color;
 
     return Container(
       decoration: BoxDecoration(
@@ -110,7 +110,7 @@ class _ItemWidget extends StatelessWidget {
   final double iconSize;
   final bool isSelected;
   final BottomNavyBarItem item;
-  final Color backgroundColor;
+  final Color? backgroundColor;
   final double itemCornerRadius;
   final Duration animationDuration;
   final Curve curve;
